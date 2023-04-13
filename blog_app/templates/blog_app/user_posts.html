@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Страница пользователя: {{ username }}
+{% endblock title %}
+
+
+{% block content %}
+<div class="mb-5">
+    <h2 class="text-center mb-1">Об авторе</h2>
+    <div class="row">
+        <div class="col-3">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    Username: <b>{{ user.username }}</b>
+                </li>
+                <li class="list-group-item">
+                    Email: <b>{{ user.email }}</b>
+                </li>
+            </ul>
+        </div>
+        <div class="col-9">
+            <div class="list-group">
+                <div class="list-group-item">
+                    Общее кол-во просмотров статей: {{ total_views }}
+                </div>
+                <div class="list-group-item">
+                    Общее кол-во статей: {{ total_posts }}
+                </div>
+                <div class="list-group-item">
+                    Общее кол-во комментариев: {{ total_comments }}
+                </div>
+                <div class="list-group-item">
+                    Дата регистрации: {{ user.date_joined }}
+                </div>
+                <div class="list-group-item">
+                    На сайте уже: {{ registered_time }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2 class="text-center mb-1">Статьи автора</h2>
+{% include 'components/_posts-row.html' %}
+
+
+{% endblock content %}

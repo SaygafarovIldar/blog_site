@@ -1,0 +1,9 @@
+<div class="row">
+    {% for post in posts %}
+    <div class="col col-md-6 col-lg-4">
+        {% include 'components/_post-card.html' %}
+    </div>
+    {% empty %}
+    <h2>Пусто....</h2>
+    {% endfor %}
+</div>

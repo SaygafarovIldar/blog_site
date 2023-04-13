@@ -1,0 +1,57 @@
+{% load custom_tags %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        {% block title %}
+        {% endblock title %}
+    </title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+          integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+</head>
+<body>
+
+{% include 'components/_header.html' %}
+
+<main>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            {% if request.path != '/login/' and request.path != '/registration/' %}
+            <div class="col-2">
+                <h3 class="text-center">Категории</h3>
+                <div class="list-group">
+                    {% get_categories as categories %}
+                    <a href="{% url 'home' %}" class="list-group-item list-group-item-action">Все категории</a>
+                    {% for category in categories %}
+                    <a href="{{ category.get_absolute_url }}" class="list-group-item list-group-item-action">
+                        {{ category }}
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            {% if request.path != '/login/' and request.path != '/registration/' %}
+            <div class="col-10">
+                {% else %}
+                <div class="col-4">
+                    {% endif %}
+
+                    {% block content %}
+                    {% endblock content %}
+                </div>
+            </div>
+        </div>
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
