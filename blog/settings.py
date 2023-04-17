@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-qsme+6x-$%(#d3bcfntr5ugwwg=oxp(h42p=g&^=+$5%7*=v=l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "weniye.pythonanywhere.com",
+    "127.0.0.1"
+]
 
 
 # Application definition
